@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C8B08F0A-B84D-4FDA-B1F9-D3B6167A58AF"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A25A44C7-E825-4C70-AD8C-370A4CBFEF3A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Laba 3.1/Vector.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "operator &lt;&lt;(s, obj)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2CADBF53-CBC9-43D6-99C7-83BE805590B9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Laba 3.1/Vector.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "Vector::Vector(horizontal, vertical, x1, y1, x2, y2)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "93A6F649-C23E-4A05-8A6B-2509650A598F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Laba 3.1/Vector.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "Vector::Vector(horizontal, vertical, x1, y1, x2, y2)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "93A6F649-C23E-4A05-8A6B-2509650A598F - 8383284b074c874e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Vector::Vector(int, int, int, int, int, int)"
+                  moduleName = "Laba 3.1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kseniadubova/Desktop/%D0%BF%D1%80%D0%BE%D0%B3%D0%B8/Laba%203.1/Laba%203.1/Vector.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "93A6F649-C23E-4A05-8A6B-2509650A598F - 8383284b074c876f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Vector::Vector(int, int, int, int, int, int)"
+                  moduleName = "Laba 3.1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kseniadubova/Desktop/%D0%BF%D1%80%D0%BE%D0%B3%D0%B8/Laba%203.1/Laba%203.1/Vector.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
