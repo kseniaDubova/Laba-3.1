@@ -78,24 +78,42 @@ int muny(Vector& obj)
         cout << "Incorrect value" << endl << "Operation №";
         cin >> n;
     }
+    clear_monitor();
     return n;
+}
+void sum(Vector& obj)
+{
+    cout << "" << endl;
+}
+void sum_bool(Vector& obj)
+{
+    cout << "" << endl;
+}
+void mul(Vector& obj)
+{
+    cout << "" << endl;
+}
+void mul_bool(Vector& obj)
+{
+    cout << "" << endl;
+}
+void invert(Vector& obj)
+{
+    cout << "" << endl;
+}
+void fullness(Vector& obj)
+{
+    cout << "" << endl;
 }
 int main()
 {
-    try
-    {
+    void (*operatoin[6])(Vector& obj) = {sum, sum_bool, mul, mul_bool, invert, fullness};
         Vector obj = creating_binary_lines();
+        cout << obj;
         getchar();
         clear_monitor();
 //        int n = muny(obj);
-    } catch (ESetErrors& err)
-    {
-        err.print_error();
-        getchar();
-        clear_monitor();
-        
-        
-    }
+
     
     return 0;
 }
