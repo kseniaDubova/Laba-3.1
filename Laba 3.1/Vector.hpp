@@ -31,6 +31,7 @@ public:
 //    bool operator *();
 //    bool operator +();
     Vector& operator !();
+    double coefficient_of_fullness();
     friend ostream& operator << (ostream& s, const Vector& obj);
 
 };

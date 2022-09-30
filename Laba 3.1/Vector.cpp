@@ -85,6 +85,31 @@ Vector& Vector:: operator*(const Vector& obj)
 {
     return *this;
 }
+Vector& Vector:: operator !()
+{
+    for (int i =0; i<_horizontal; i++)
+    {
+        for (int j=0; j<_vertical; j++)
+        {
+            if (_matrix[i][j]==1)
+                _matrix[i][j]=0;
+            else _matrix[i][j]=1;
+        }
+    }
+    return *this;
+}
+double Vector:: coefficient_of_fullness()
+{
+    int counter = 0;
+    for (int i =0; i<_horizontal; i++)
+    {
+        for (int j=0; j<_vertical; j++)
+        {
+            if (_matrix[i][j]==1) counter++;
+        }
+    }
+    return _vertical*_horizontal/counter;
+}
 ostream& operator << (ostream& s, const Vector& obj)
 {
    for (int i =obj._horizontal-1; i>=0; i--)

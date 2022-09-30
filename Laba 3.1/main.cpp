@@ -99,11 +99,15 @@ void mul_bool(Vector& obj)
 }
 void invert(Vector& obj)
 {
-    cout << "" << endl;
+    cout << "Invert image" << endl;
+    cout << !obj;
+    getchar();
+    
 }
 void fullness(Vector& obj)
 {
-    cout << "" << endl;
+    cout << "Image fullness = " << obj.coefficient_of_fullness()<< endl;
+    getchar();
 }
 int main()
 {
