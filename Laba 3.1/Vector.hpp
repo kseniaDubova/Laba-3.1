@@ -9,6 +9,7 @@
 #define Vector_hpp
 #include "ESetErrors.hpp"
 #include <stdio.h>
+#include <cmath>
 const int resolution=15;
 
 
@@ -17,8 +18,12 @@ class Vector
 private:
     int** _matrix;
     int _vertical, _horizontal;
+    int min (int a, int b);
+    int max (int a, int b);
+    void make_line(int min_x, int max_x, int min_y, int max_y);
+    void make_different_lines(int i, int j, int n, int min_x, int max_x, int min_y, int max_y, bool flag);
 public:
-    Vector(int horizontal=2, int vertical =2, int x1=0, int y1 =0, int x2=0, int y2=0);
+    Vector(int horizontal=0, int vertical =0, int x1=0, int y1 =0, int x2=0, int y2=0);
     int get_horizontal() const;
     void set_horizontal(int value);
     int get_vertical() const;

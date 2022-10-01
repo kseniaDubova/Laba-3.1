@@ -6,6 +6,7 @@
 //
 #include "Vector.hpp"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 void clear_monitor()
@@ -58,7 +59,7 @@ Vector creating_binary_lines()
     cout << "Enter the coordinates of the ending of the line (x,y)" << endl;
     test(horizontal, vertical, x2, y2);
     clear_monitor();
-    return Vector(horizontal,vertical,x1,y1,x2,y2);
+    return Vector(vertical,horizontal,x1,y1,x2,y2);
 }
 int muny(Vector& obj)
 {
@@ -106,18 +107,26 @@ void invert(Vector& obj)
 }
 void fullness(Vector& obj)
 {
-    cout << "Image fullness = " << obj.coefficient_of_fullness()<< endl;
+    cout << "Image fullness = ";
+    printf("%.9fl", obj.coefficient_of_fullness());
+//    cout << setprecision(4) << obj.coefficient_of_fullness()<< endl;
     getchar();
 }
 int main()
 {
     void (*operatoin[6])(Vector& obj) = {sum, sum_bool, mul, mul_bool, invert, fullness};
-        Vector obj = creating_binary_lines();
-        cout << obj;
+    Vector obj = creating_binary_lines();
+    cout << obj;
+    int n=muny(obj);
+    getchar();
+    while (n<7)
+    {
+        operatoin[n-1](obj);
         getchar();
         clear_monitor();
-//        int n = muny(obj);
+        cout << "What's next?" << endl;
+        n=muny(obj);
+    }
 
-    
     return 0;
 }
