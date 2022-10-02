@@ -20,8 +20,7 @@ private:
     int _resolution;
     int min (int a, int b);
     int max (int a, int b);
-    void make_line(int min_x, int max_x, int min_y, int max_y, bool flag);
-    void make_different_lines(int i, int j, int n, int min_x, int max_x, int min_y, int max_y, bool flag_1,bool flad_2);
+    void make_line(int min_x, int max_x, int min_y, int max_y, int flag_1,int flag_2);
 public:
     Vector(int resolution=0, int x1=0, int y1 =0, int x2=0, int y2=0);
     int get_resolution() const;
