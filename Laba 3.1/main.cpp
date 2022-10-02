@@ -16,13 +16,13 @@ void clear_monitor()
         cout << endl;
     }
 }
-void test(int hor, int vert, int& x, int& y)
+void test(int resolution, int& x, int& y)
 {
     cout << "x = ";
     cin >> x;
     cout << "y = ";
     cin >> y;
-    while (x<0||x>hor||y<0||y>vert)
+    while (x<0||x>resolution||y<0||y>resolution)
     {
         cout << "Incorrect value" << endl;
         cout << "x = ";
@@ -34,32 +34,24 @@ void test(int hor, int vert, int& x, int& y)
 Vector creating_binary_lines()
 {
     cout << "Creating binary lines" << endl;
-    cout << "What is the image resolution?" << endl;
-    cout << "Horizontal: ";
-    int horizontal;
-    int vertical;
-    cin >> horizontal;
-    while (horizontal <= 0)
+    cout << "What is the image resolution? (n*n)" << endl;
+    cout << "Resolution (n*n): n = ";
+    int resolution;
+    cin >> resolution;
+    while (resolution <= 0)
     {
         cout << "Incorrect value" << endl;
-        cout << "Horizontal: ";
-        cin >> horizontal;
+        cout << "Resolution (n*n): n = ";
+        cin >> resolution;
     }
-    cout << "Vertical: ";
-    cin >> vertical;
-    while (vertical <= 0)
-    {
-        cout << "Incorrect value" << endl;
-        cout << "Vertical: ";
-        cin >> vertical;
-    }
+
     int x1,y1,x2,y2;
     cout << "Enter the coordinates of the beginning of the line (x,y)" << endl;
-    test(horizontal, vertical, x1, y1);
+    test(resolution, x1, y1);
     cout << "Enter the coordinates of the ending of the line (x,y)" << endl;
-    test(horizontal, vertical, x2, y2);
+    test(resolution, x2, y2);
     clear_monitor();
-    return Vector(vertical,horizontal,x1,y1,x2,y2);
+    return Vector(resolution,x1,y1,x2,y2);
 }
 int muny(Vector& obj)
 {
@@ -84,7 +76,12 @@ int muny(Vector& obj)
 }
 void sum(Vector& obj)
 {
-    cout << "" << endl;
+    cout << "Summarize" << endl;
+    Vector tmp = creating_binary_lines();
+    getchar();
+    clear_monitor();
+    obj = obj + tmp;
+    cout << obj;
 }
 void sum_bool(Vector& obj)
 {
@@ -92,7 +89,12 @@ void sum_bool(Vector& obj)
 }
 void mul(Vector& obj)
 {
-    cout << "" << endl;
+    cout << "Multiply" << endl;
+    Vector tmp = creating_binary_lines();
+    getchar();
+    clear_monitor();
+    obj = obj * tmp;
+    cout << obj;
 }
 void mul_bool(Vector& obj)
 {

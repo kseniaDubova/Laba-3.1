@@ -6,8 +6,8 @@
 //
 
 #include "ESetErrors.hpp"
-EBigValue::EBigValue() {};
-void EBigValue:: print_error() const
+EUnpossibal::EUnpossibal() {};
+void EUnpossibal:: print_error() const
 {
     cout <<"Operation is unpossibal"<<endl;
 }

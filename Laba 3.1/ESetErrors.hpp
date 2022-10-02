@@ -15,10 +15,10 @@ class ESetErrors
 public: virtual void print_error() const =0;
 };
 
-class EBigValue: public ESetErrors
+class EUnpossibal: public ESetErrors
 {
 public:
-    EBigValue();
+    EUnpossibal();
     void print_error() const;
 };
 #endif /* ESetErrors_hpp */

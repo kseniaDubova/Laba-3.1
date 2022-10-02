@@ -17,17 +17,15 @@ class Vector
 {
 private:
     int** _matrix;
-    int _vertical, _horizontal;
+    int _resolution;
     int min (int a, int b);
     int max (int a, int b);
-    void make_line(int min_x, int max_x, int min_y, int max_y);
-    void make_different_lines(int i, int j, int n, int min_x, int max_x, int min_y, int max_y, bool flag);
+    void make_line(int min_x, int max_x, int min_y, int max_y, bool flag);
+    void make_different_lines(int i, int j, int n, int min_x, int max_x, int min_y, int max_y, bool flag_1,bool flad_2);
 public:
-    Vector(int horizontal=0, int vertical =0, int x1=0, int y1 =0, int x2=0, int y2=0);
-    int get_horizontal() const;
-    void set_horizontal(int value);
-    int get_vertical() const;
-    void set_vertical(int value);
+    Vector(int resolution=0, int x1=0, int y1 =0, int x2=0, int y2=0);
+    int get_resolution() const;
+    void set_resolution(int value);
     Vector(const Vector& a);
     ~Vector();
 //    void operator ()() = 0;
