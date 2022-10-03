@@ -1,9 +1,4 @@
-//
-//  main.cpp
-//  Laba 3.1
-//
-//  Created by Ксения Дубова on 26.09.2022.
-//
+
 #include "Vector.hpp"
 #include <iostream>
 #include <iomanip>
@@ -62,11 +57,14 @@ int muny(Vector& obj)
     cout << "4 - multiply with bool"<< endl;
     cout << "5 - invert image" << endl;
     cout << "6 - image fullness calculation" << endl;
-    cout << "7 - go out" << endl;
+    cout << "7 - сhange one element" << endl;
+    cout << "8 - show one element" << endl;
+    cout << "9 - print image" << endl;
+    cout << "10 - go out" << endl;
     cout << "Operation №";
     int n;
     cin >> n;
-    while (n>7||n<=0)
+    while (n>10||n<=0)
     {
         cout << "Incorrect value" << endl << "Operation №";
         cin >> n;
@@ -85,7 +83,14 @@ void sum(Vector& obj)
 }
 void sum_bool(Vector& obj)
 {
-    cout << "" << endl;
+    cout << "Summarize with bool" << endl;
+    cout << "Enter boolean value (1/0/true/false)" << endl;
+    bool value;
+    cout << "Boolean value = ";
+    cin >> value;
+    obj=obj+value;
+    cout << obj;
+    getchar();
 }
 void mul(Vector& obj)
 {
@@ -98,7 +103,14 @@ void mul(Vector& obj)
 }
 void mul_bool(Vector& obj)
 {
-    cout << "" << endl;
+    cout << "Multiply with bool" << endl;
+    cout << "Enter boolean value (1/0/true/false)" << endl;
+    bool value;
+    cout << "Boolean value = ";
+    cin >> value;
+    obj=obj*value;
+    cout << obj;
+    getchar();
 }
 void invert(Vector& obj)
 {
@@ -110,20 +122,52 @@ void invert(Vector& obj)
 void fullness(Vector& obj)
 {
     cout << "Image fullness = ";
-    printf("%.9fl", obj.coefficient_of_fullness());
+    printf("%fl", obj.coefficient_of_fullness());
 //    cout << setprecision(4) << obj.coefficient_of_fullness()<< endl;
+    getchar();
+}
+void change_one(Vector& obj)
+{
+    cout << "Change one element" << endl;
+    cout << "Enter the coordinates (x,y)" << endl;
+    int x,y;
+    test(obj.get_resolution(), x, y);
+    cout << "Enter boolean value (1/0/true/false)" << endl;
+    bool value;
+    cout << "Boolean value = ";
+    cin >> value;
+    obj(x,y,value);
+    cout << obj;
+    getchar();
+}
+void show_one(Vector& obj)
+{
+    cout << "Change one element" << endl;
+    cout << "Enter the coordinates (x,y)" << endl;
+    int x,y;
+    test(obj.get_resolution(), x, y);
+    cout << "(" << x << "," << y << ")" << obj(x,y);
+    getchar();
+}
+void print_obj(Vector& obj)
+{
+    cout << obj;
     getchar();
 }
 int main()
 {
-    void (*operatoin[6])(Vector& obj) = {sum, sum_bool, mul, mul_bool, invert, fullness};
+    void (*operatoin[9])(Vector& obj) = {sum, sum_bool, mul, mul_bool, invert, fullness, change_one, show_one, print_obj};
     Vector obj = creating_binary_lines();
     cout << obj;
     int n=muny(obj);
     getchar();
-    while (n<7)
+    while (n<10)
     {
-        operatoin[n-1](obj);
+        try {
+            operatoin[n-1](obj);
+        } catch (ESetErrors& err) {
+            err.print_error();
+        }
         getchar();
         clear_monitor();
         cout << "What's next?" << endl;

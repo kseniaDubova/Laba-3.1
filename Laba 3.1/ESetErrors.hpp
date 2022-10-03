@@ -21,4 +21,10 @@ public:
     EUnpossibal();
     void print_error() const;
 };
+class EUncorrectIndex: public ESetErrors
+{
+public:
+    EUncorrectIndex();
+    void print_error() const;
+};
 #endif /* ESetErrors_hpp */

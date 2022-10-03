@@ -10,13 +10,11 @@
 #include "ESetErrors.hpp"
 #include <stdio.h>
 #include <cmath>
-const int resolution=15;
-
 
 class Vector
 {
 private:
-    int** _matrix;
+    bool** _matrix;
     int _resolution;
     int min (int a, int b);
     int max (int a, int b);
@@ -27,11 +25,14 @@ public:
     void set_resolution(int value);
     Vector(const Vector& a);
     ~Vector();
-//    void operator ()() = 0;
+    bool operator ()(int x, int y);
+    void operator ()(int x, int y, bool value);
     Vector& operator *(const Vector& obg);
     Vector& operator +(const Vector& obg);
-//    bool operator *();
-//    bool operator +();
+    Vector& operator *(bool value);
+    Vector& operator +(bool value);
+    friend Vector& operator *(const bool value, Vector& obj);
+    friend Vector& operator +(const bool value, Vector& obj);
     Vector& operator !();
     double coefficient_of_fullness();
     friend ostream& operator << (ostream& s, const Vector& obj);

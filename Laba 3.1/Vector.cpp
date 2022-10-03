@@ -1,11 +1,4 @@
 
-//
-//  Vector.cpp
-//  Laba 3.1
-//
-//  Created by Ксения Дубова on 14.09.2022.
-//
-
 #include "Vector.hpp"
 
 int Vector:: max (int a, int b)
@@ -57,7 +50,8 @@ void Vector:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1,in
                        {
                             _matrix[j][i]=1;
                             count++;
-                            j++;
+                           if (j!=max_y-1)
+                               j++;
                            
                        }
                         i++;
@@ -126,10 +120,10 @@ void Vector:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1,in
 Vector::Vector(int resolution, int x1, int y1, int x2, int y2)
 {
     set_resolution(resolution);
-    _matrix = new int * [_resolution];
+    _matrix = new bool * [_resolution];
     for (int i = 0; i<_resolution; i++)
     {
-        _matrix[i]= new int [_resolution];
+        _matrix[i]= new bool [_resolution];
     }
     for (int i = 0; i<_resolution; i++)
     {
@@ -164,10 +158,10 @@ int Vector:: get_resolution() const
 Vector::Vector(const Vector& a)
 {
     _resolution=a._resolution;
-    _matrix = new int * [_resolution];
+    _matrix = new bool * [_resolution];
     for (int i = 0; i<_resolution; i++)
     {
-        _matrix[i]= new int [_resolution];
+        _matrix[i]= new bool [_resolution];
     }
     for (int i = 0; i<_resolution; i++)
     {
@@ -194,9 +188,7 @@ Vector& Vector:: operator+(const Vector& obj)
     {
        for (int j = 0; j<_resolution; j++)
        {
-           if (_matrix[i][j]==0&&obj._matrix[i][j]==0)
-               _matrix[i][j]=0;
-           else _matrix[i][j]=1;
+           _matrix[i][j]=_matrix[i][j]||obj._matrix[i][j];
        }
     }
     return *this;
@@ -208,9 +200,7 @@ Vector& Vector:: operator*(const Vector& obj)
     {
        for (int j = 0; j<_resolution; j++)
        {
-           if (_matrix[i][j]==1&&obj._matrix[i][j]==1)
-               _matrix[i][j]=1;
-           else _matrix[i][j]=0;
+           _matrix[i][j]=_matrix[i][j]&&obj._matrix[i][j];
        }
     }
     return *this;
@@ -228,6 +218,30 @@ Vector& Vector:: operator !()
     }
     return *this;
 }
+
+Vector& Vector:: operator *(bool value)
+{
+    for (int i = 0; i<_resolution; i++)
+    {
+       for (int j = 0; j<_resolution; j++)
+       {
+           _matrix[i][j]=_matrix[i][j]&&value;
+       }
+    }
+    return *this;
+}
+Vector& Vector:: operator +(bool value)
+{
+    for (int i = 0; i<_resolution; i++)
+    {
+       for (int j = 0; j<_resolution; j++)
+       {
+           _matrix[i][j]=_matrix[i][j]||value;
+       }
+    }
+    return *this;
+}
+
 double Vector:: coefficient_of_fullness()
 {
     int counter = 0;
@@ -245,8 +259,31 @@ ostream& operator << (ostream& s, const Vector& obj)
    for (int i =obj._resolution-1; i>=0; i--)
     {
         for (int j =0; j<obj._resolution; j++)
-            s << obj._matrix[i][j];
+        {
+            if (obj._matrix[i][j]==0)
+                s << " ";
+            else s << obj._matrix[i][j];
+        }
         s << endl;
     }
     return s;
 }
+bool Vector:: operator ()(int x, int y)
+{
+    if (x<=0||y<=0||x>_resolution||y>_resolution) throw EUncorrectIndex();
+    return _matrix[x-1][y-1];
+}
+void Vector:: operator ()(int x, int y, bool value)
+{
+    if (x<=0||y<=0||x>_resolution||y>_resolution) throw EUncorrectIndex();
+    _matrix[x-1][y-1]=value;
+}
+//Vector& Vector:: operator *(const bool value, Vector& obj)
+//{
+//    return obj*value;
+//}
+//
+//Vector& Vector:: operator +(const bool value, Vector& obj)
+//{
+//    return obj+value;
+//}
