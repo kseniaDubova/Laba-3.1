@@ -81,6 +81,8 @@ void Vector:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1,in
                             _matrix[j][i]=1;
                             count++;
                             i--;
+                           if (i==max_x-1)
+                               i++;
                            
                        }
                         j++;
@@ -278,12 +280,12 @@ void Vector:: operator ()(int x, int y, bool value)
     if (x<=0||y<=0||x>_resolution||y>_resolution) throw EUncorrectIndex();
     _matrix[x-1][y-1]=value;
 }
-//Vector& Vector:: operator *(const bool value, Vector& obj)
-//{
-//    return obj*value;
-//}
-//
-//Vector& Vector:: operator +(const bool value, Vector& obj)
-//{
-//    return obj+value;
-//}
+Vector& operator *(const bool value, Vector& obj)
+{
+    return obj*value;
+}
+
+Vector& operator +(const bool value, Vector& obj)
+{
+    return obj+value;
+}
