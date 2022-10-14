@@ -17,7 +17,7 @@ void test(int resolution, int& x, int& y)
     cin >> x;
     cout << "y = ";
     cin >> y;
-    while (x<0||x>resolution||y<0||y>resolution)
+    while (x<=0||x>resolution||y<=0||y>resolution)
     {
         cout << "Incorrect value" << endl;
         cout << "x = ";
@@ -42,8 +42,10 @@ Vector creating_binary_lines()
 
     int x1,y1,x2,y2;
     cout << "Enter the coordinates of the beginning of the line (x,y)" << endl;
+    cout << "Values must be greater than zero" << endl;
     test(resolution, x1, y1);
     cout << "Enter the coordinates of the ending of the line (x,y)" << endl;
+    cout << "Values must be greater than zero" << endl;
     test(resolution, x2, y2);
     clear_monitor();
     return Vector(resolution,x1,y1,x2,y2);
@@ -122,8 +124,7 @@ void invert(Vector& obj)
 void fullness(Vector& obj)
 {
     cout << "Image fullness = ";
-    printf("%fl", obj.coefficient_of_fullness());
-//    cout << setprecision(4) << obj.coefficient_of_fullness()<< endl;
+    cout << setprecision(4) << obj.coefficient_of_fullness()<< endl;
     getchar();
 }
 void change_one(Vector& obj)

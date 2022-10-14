@@ -246,7 +246,7 @@ Vector& Vector:: operator +(bool value)
 
 double Vector:: coefficient_of_fullness()
 {
-    int counter = 0;
+    double counter = 0;
     for (int i =0; i<_resolution; i++)
     {
         for (int j=0; j<_resolution; j++)
@@ -254,7 +254,8 @@ double Vector:: coefficient_of_fullness()
             if (_matrix[i][j]==1) counter++;
         }
     }
-    return counter/_resolution*_resolution;
+
+    return counter/(_resolution*_resolution);
 }
 ostream& operator << (ostream& s, const Vector& obj)
 {
