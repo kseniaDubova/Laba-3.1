@@ -14,8 +14,8 @@
             filePath = "Laba 3.1/Vector.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "operator &lt;&lt;(s, obj)"
             landmarkType = "9">
          </BreakpointContent>
@@ -30,9 +30,9 @@
             filePath = "Laba 3.1/Vector.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "Vector::Vector(resolution, x1, y1, x2, y2)"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "Vector::Vector(resolution)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,9 +46,9 @@
             filePath = "Laba 3.1/Vector.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "Vector::Vector(resolution, x1, y1, x2, y2)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "Vector::Vector(resolution)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -94,8 +94,8 @@
             filePath = "Laba 3.1/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "fullness(obj)"
             landmarkType = "9">
          </BreakpointContent>
@@ -110,25 +110,9 @@
             filePath = "Laba 3.1/Vector.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "Vector:: coefficient_of_fullness()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "67779106-6E07-4A99-B082-C3433EF989E4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Laba 3.1/Vector.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "Vector::Vector(resolution, x1, y1, x2, y2)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -142,8 +126,8 @@
             filePath = "Laba 3.1/Vector.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "8"
-            endingLineNumber = "8"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
             landmarkName = "Vector:: make_line(min_x, max_x, min_y, max_y, flag_1, flag_2)"
             landmarkType = "7">
          </BreakpointContent>

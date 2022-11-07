@@ -1,9 +1,3 @@
-//
-//  ESetErrors.hpp
-//  Laba 3.1
-//
-//  Created by Ксения Дубова on 14.09.2022.
-//
 
 #ifndef ESetErrors_hpp
 #define ESetErrors_hpp

@@ -48,7 +48,9 @@ Vector creating_binary_lines()
     cout << "Values must be greater than zero" << endl;
     test(resolution, x2, y2);
     clear_monitor();
-    return Vector(resolution,x1,y1,x2,y2);
+    Vector obj(resolution);
+    obj.set_line(x1,y1,x2,y2);
+    return obj;
 }
 int muny(Vector& obj)
 {

@@ -1,9 +1,4 @@
-//
-//  Vector.hpp
-//  Laba 3.1
-//
-//  Created by Ксения Дубова on 14.09.2022.
-//
+
 
 #ifndef Vector_hpp
 #define Vector_hpp
@@ -20,9 +15,10 @@ private:
     int max (int a, int b);
     void make_line(int min_x, int max_x, int min_y, int max_y, int flag_1,int flag_2);
 public:
-    Vector(int resolution=0, int x1=0, int y1 =0, int x2=0, int y2=0);
+    Vector(int resolution=0);
     int get_resolution() const;
     void set_resolution(int value);
+    void set_line(int x1, int y1, int x2, int y2);
     Vector(const Vector& a);
     ~Vector();
     bool operator ()(int x, int y);
