@@ -1,13 +1,17 @@
 
 #include "ESetErrors.hpp"
+
+
 EUnpossibal::EUnpossibal() {};
+
 void EUnpossibal:: print_error() const
 {
-    cout <<"Operation is unpossibal"<<endl;
+    cout << "Operation is unpossibal" << endl;
 }
 
 EUncorrectIndex::EUncorrectIndex() {};
+
 void EUncorrectIndex:: print_error() const
 {
-    cout <<"Uncorrect index"<<endl;
+    cout << "Uncorrect index" << endl;
 }

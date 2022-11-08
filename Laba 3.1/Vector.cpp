@@ -1,17 +1,20 @@
 
 #include "Vector.hpp"
+
+
 template<typename T>
 int Vector<T>:: max (int a, int b)
-{ return (a>b) ? a: b;}
+{ return (a > b) ? a: b;}
+
 
 template<typename T>
 int Vector<T>:: min (int a, int b)
-{ return (a<b) ? a: b;}
+{ return (a < b) ? a: b;}
+
 
 template<typename T>
 void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1,int flag_2)
 {
-//    int n;
     switch (flag_1)
     {
         case 1:
@@ -24,26 +27,23 @@ void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1
                     int error = 0;
                     int deltaerr = (deltay + 1);
                     int y = min_y;
-//                    int x = min_x;
                     int diry = max_y - min_y;
                     if (diry > 0)
                         diry = 1;
                     if (diry < 0)
                         diry = -1;
-                    for (int x = min_x; x<=max_x; x++)
+                    for (int x = min_x; x <= max_x; x++)
                     {
-                        _matrix[y][x]=(T)1;
+                        _matrix[y][x] = (T)1;
                         error = error + deltaerr;
                         if (error >= (deltax + 1))
                         {
                             y = y + diry;
                             error = error - (deltax + 1);
                         }
-
                     }
                     break;
                 }
-                    
                 case 0:
                 {
                     int deltax = abs(max_x - min_x);
@@ -51,28 +51,25 @@ void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1
                     int error = 0;
                     int deltaerr = (deltax + 1);
                     int x = min_x;
-//                    int x = min_x;
                     int dirx = max_x - min_x;
                     if (dirx > 0)
                         dirx = 1;
                     if (dirx < 0)
                         dirx = -1;
-                    for (int y = min_y; y<=max_y; y++)
+                    for (int y = min_y; y <= max_y; y++)
                     {
-                        _matrix[y][x]=(T)1;
+                        _matrix[y][x] = (T)1;
                         error = error + deltaerr;
                         if (error >= (deltay + 1))
                         {
                             x = x + dirx;
                             error = error - (deltay + 1);
                         }
-                        
                     }
                     break;
                 }
             }
             break;
-            
         case 0:
             switch (flag_2)
             {
@@ -83,22 +80,20 @@ void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1
                     int error = 0;
                     int deltaerr = (deltay + 1);
                     int y = min_y;
-//                    int x = min_x;
                     int diry = max_y - min_y;
                     if (diry > 0)
                         diry = 1;
                     if (diry < 0)
                         diry = -1;
-                    for (int x = max_x; x>=min_x; x--)
+                    for (int x = max_x; x >= min_x; x--)
                     {
-                        _matrix[y][x]=(T)1;
+                        _matrix[y][x] = (T)1;
                         error = error + deltaerr;
                         if (error >= (deltax + 1))
                         {
                             y = y + diry;
                             error = error - (deltax + 1);
                         }
-                        
                     }
                     break;
                 }
@@ -115,16 +110,15 @@ void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1
                         dirx = 1;
                     if (dirx < 0)
                         dirx = -1;
-                    for (int y = max_y; y>=min_y; y--)
+                    for (int y = max_y; y >= min_y; y--)
                     {
-                        _matrix[y][x]=(T)1;
+                        _matrix[y][x] = (T)1;
                         error = error + deltaerr;
                         if (error >= (deltay + 1))
                         {
                             x = x + dirx;
                             error = error - (deltay + 1);
                         }
-                        
                     }
                     break;
                 }
@@ -132,161 +126,182 @@ void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1
             break;
     }
 }
+
+
 template<typename T>
 Vector<T>::Vector(int resolution)
 {
     set_resolution(resolution);
     _matrix = new T * [_resolution];
-    for (int i = 0; i<_resolution; i++)
+    for (int i = 0; i < _resolution; i++)
     {
         _matrix[i]= new T [_resolution];
     }
-    
-
 }
+
+
 template<typename T>
 void Vector<T>:: set_line(int x1, int y1, int x2, int y2)
 {
-    if (_matrix==NULL) throw EUnpossibal();
-    for (int i = 0; i<_resolution; i++)
+    if (_matrix == NULL) throw EUnpossibal();
+    for (int i = 0; i < _resolution; i++)
     {
-       for (int j = 0; j<_resolution; j++)
+       for (int j = 0; j < _resolution; j++)
        {
             _matrix[i][j] = (T)0;
        }
     }
-    int flag_1=0, flag_2=0;
-    if ((min(x1, x2)==x1&&min(y1, y2)==y1)||(min(x1, x2)==x2&&min(y1, y2)==y2))
-        flag_1=1;
-    if (max(x1, x2)-min(x1, x2)>max(y1, y2)-min(y1, y2))
-        flag_2=1;
+    int flag_1 = 0, flag_2 = 0;
+    if ((min(x1, x2) == x1 && min(y1, y2) == y1)||(min(x1, x2) == x2 && min(y1, y2) == y2))
+        flag_1 = 1;
+    if (max(x1, x2) - min(x1, x2) > max(y1, y2) - min(y1, y2))
+        flag_2 = 1;
     make_line(min(x1, x2), max(x1, x2), min(y1, y2), max(y1, y2), flag_1, flag_2);
 }
+
+
 template<typename T>
 void Vector<T>:: set_resolution(int value)
 {
-    _resolution=value;
+    _resolution = value;
 }
+
+
 template<typename T>
 int Vector<T>:: get_resolution() const
 {
     return _resolution;
 }
+
+
 template<typename T>
-Vector<T>::Vector(const Vector& a)
+Vector<T>::Vector(const Vector<T>& a)
 {
-    _resolution=a._resolution;
+    _resolution = a._resolution;
     _matrix = new T * [_resolution];
-    for (int i = 0; i<_resolution; i++)
+    for (int i = 0; i < _resolution; i++)
     {
-        _matrix[i]= new T [_resolution];
+        _matrix[i] = new T [_resolution];
     }
-    for (int i = 0; i<_resolution; i++)
+    for (int i = 0; i < _resolution; i++)
     {
-       for (int j = 0; j<_resolution; j++)
+       for (int j = 0; j < _resolution; j++)
        {
-           _matrix[i][j]=a._matrix[i][j];
+           _matrix[i][j] = a._matrix[i][j];
        }
-        
     }
-    
 }
+
+
 template<typename T>
 Vector<T>::~Vector()
 {
-    for (int i = 0; i<_resolution; i++)
+    for (int i = 0; i < _resolution; i++)
     {
        delete _matrix[i];
     }
     delete [] _matrix;
 }
+
+
 template<typename T>
 Vector<T>& Vector<T>:: operator+(const Vector& obj)
 {
-    if (_resolution!=obj._resolution) throw EUnpossibal();
-    for (int i = 0; i<_resolution; i++)
+    if (_resolution != obj._resolution) throw EUnpossibal();
+    for (int i = 0; i < _resolution; i++)
     {
-       for (int j = 0; j<_resolution; j++)
+       for (int j = 0; j < _resolution; j++)
        {
-           _matrix[i][j]=_matrix[i][j]||obj._matrix[i][j];
+           _matrix[i][j] = _matrix[i][j]||obj._matrix[i][j];
        }
     }
     return *this;
 }
+
+
 template<typename T>
 Vector<T>& Vector<T>:: operator*(const Vector& obj)
 {
-    if (_resolution!=obj._resolution) throw EUnpossibal();
-    for (int i = 0; i<_resolution; i++)
+    if (_resolution != obj._resolution) throw EUnpossibal();
+    for (int i = 0; i < _resolution; i++)
     {
-       for (int j = 0; j<_resolution; j++)
+       for (int j = 0; j < _resolution; j++)
        {
-           _matrix[i][j]=_matrix[i][j]&&obj._matrix[i][j];
+           _matrix[i][j] = _matrix[i][j]&&obj._matrix[i][j];
        }
     }
     return *this;
 }
+
+
 template<typename T>
 Vector<T>& Vector<T>:: operator !()
 {
-    for (int i =0; i<_resolution; i++)
+    for (int i = 0; i < _resolution; i++)
     {
-        for (int j=0; j<_resolution; j++)
+        for (int j = 0; j < _resolution; j++)
         {
-            if (_matrix[i][j]==(T)1)
-                _matrix[i][j]=(T)0;
-            else _matrix[i][j]=(T)1;
+            if (_matrix[i][j] == (T)1)
+                _matrix[i][j] = (T)0;
+            else _matrix[i][j] = (T)1;
         }
     }
     return *this;
 }
+
+
 template<typename T>
 Vector<T>& Vector<T>:: operator *(T value)
 {
-    for (int i = 0; i<_resolution; i++)
+    for (int i = 0; i < _resolution; i++)
     {
-       for (int j = 0; j<_resolution; j++)
+       for (int j = 0; j < _resolution; j++)
        {
-           _matrix[i][j]=_matrix[i][j]&&value;
+           _matrix[i][j] = _matrix[i][j]&&value;
        }
     }
     return *this;
 }
+
+
 template<typename T>
 Vector<T>& Vector<T>:: operator +(T value)
 {
-    for (int i = 0; i<_resolution; i++)
+    for (int i = 0; i < _resolution; i++)
     {
-       for (int j = 0; j<_resolution; j++)
+       for (int j = 0; j < _resolution; j++)
        {
-           _matrix[i][j]=_matrix[i][j]||value;
+           _matrix[i][j] = _matrix[i][j]||value;
        }
     }
     return *this;
 }
+
+
 template<typename T>
 double Vector<T>:: coefficient_of_fullness()
 {
     double counter = 0;
-    for (int i =0; i<_resolution; i++)
+    for (int i = 0; i < _resolution; i++)
     {
-        for (int j=0; j<_resolution; j++)
+        for (int j = 0; j < _resolution; j++)
         {
-            if (_matrix[i][j]==(T)1)
+            if (_matrix[i][j] == (T)1)
                 counter++;
         }
     }
-
-    return counter/(_resolution*_resolution);
+    return counter / (_resolution*_resolution);
 }
+
+
 template<typename T>
 ostream& operator << (ostream& s, const Vector<T>& obj)
 {
-   for (int i =obj._resolution-1; i>=0; i--)
+   for (int i = obj._resolution - 1; i >= 0; i--)
     {
-        for (int j =0; j<obj._resolution; j++)
+        for (int j = 0; j < obj._resolution; j++)
         {
-            if (obj._matrix[i][j]==(T)0)
+            if (obj._matrix[i][j] == (T)0)
                 s << " ";
             else s << obj._matrix[i][j];
         }
@@ -294,25 +309,33 @@ ostream& operator << (ostream& s, const Vector<T>& obj)
     }
     return s;
 }
+
+
 template<typename T>
 T Vector<T>:: operator ()(int x, int y)
 {
-    if (x<=0||y<=0||x>_resolution||y>_resolution) throw EUncorrectIndex();
-    return _matrix[x-1][y-1];
+    if (x <= 0 || y <= 0 || x > _resolution || y > _resolution) throw EUncorrectIndex();
+    return _matrix[x - 1][y - 1];
 }
+
+
 template<typename T>
 void Vector<T>:: operator ()(int x, int y, T value)
 {
-    if (x<=0||y<=0||x>_resolution||y>_resolution) throw EUncorrectIndex();
-    _matrix[x-1][y-1]=value;
+    if (x <= 0 || y <= 0 || x > _resolution || y > _resolution) throw EUncorrectIndex();
+    _matrix[x - 1][y - 1] = value;
 }
+
+
 template<typename T>
 Vector<T>& operator *(const T value, Vector<T>& obj)
 {
     return obj*value;
 }
+
+
 template<typename T>
 Vector<T>& operator +(const T value, Vector<T>& obj)
 {
-    return obj+value;
+    return obj + value;
 }

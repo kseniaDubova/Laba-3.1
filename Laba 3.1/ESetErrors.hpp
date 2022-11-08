@@ -4,20 +4,25 @@
 #include <iostream>
 using namespace std;
 #include <stdio.h>
+
+
 class ESetErrors
 {
-public: virtual void print_error() const =0;
+ public: virtual void print_error() const =0;
 };
+
 
 class EUnpossibal: public ESetErrors
 {
-public:
+ public:
     EUnpossibal();
     void print_error() const;
 };
+
+
 class EUncorrectIndex: public ESetErrors
 {
-public:
+ public:
     EUncorrectIndex();
     void print_error() const;
 };

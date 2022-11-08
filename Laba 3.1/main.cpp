@@ -4,20 +4,23 @@
 #include <iomanip>
 using namespace std;
 
+
 void clear_monitor()
 {
-    for (int i=0; i<31; i++)
+    for (int i = 0; i < 31; i++)
     {
         cout << endl;
     }
 }
+
+
 void test(int resolution, int& x, int& y)
 {
     cout << "x = ";
     cin >> x;
     cout << "y = ";
     cin >> y;
-    while (x<=0||x>resolution||y<=0||y>resolution)
+    while (x <= 0 || x > resolution || y <= 0 || y > resolution)
     {
         cout << "Incorrect value" << endl;
         cout << "x = ";
@@ -26,34 +29,8 @@ void test(int resolution, int& x, int& y)
         cin >> y;
     }
 }
-template<typename T>
-Vector<T> chooze_type(int type, int resolution,int x1,int y1,int x2,int y2)
-{
-    if (type==1)
-    {
-        Vector<float> obj(resolution);
-        obj.set_line(x1,y1,x2,y2);
-        return obj;
-    }
-    if (type == 2)
-    {
-        Vector<short> obj(resolution);
-        obj.set_line(x1,y1,x2,y2);
-        return obj;
-    }
-    if (type == 3)
-    {
-        Vector<char> obj(resolution);
-        obj.set_line(x1,y1,x2,y2);
-        return obj;
-    }
-    if (type == 4)
-    {
-        Vector<bool> obj(resolution);
-        obj.set_line(x1,y1,x2,y2);
-        return obj;
-    }
-}
+
+
 template<typename T>
 Vector<T> creating_binary_lines()
 {
@@ -76,23 +53,13 @@ Vector<T> creating_binary_lines()
     cout << "Enter the coordinates of the ending of the line (x,y)" << endl;
     cout << "Values must be greater than zero" << endl;
     test(resolution, x2, y2);
-    cout << "Select data type:" << endl;
-    cout << "1 - float" << endl;
-    cout << "2 - short" << endl;
-    cout << "3 - char" << endl;
-    cout << "4 - bool" << endl;
-    cout << "type: ";
-    int type;
-    cin >> type;
-    while (type<=0||type>4)
-    {
-        cout << "Incorrect value" << endl;
-        cout << "type: ";
-        cin >> type;
-    }
     clear_monitor();
-    return chooze_type<T>(type, resolution, x1, y1, x2, y2);
+    Vector<T> obj(resolution);
+    obj.set_line(x1,y1,x2,y2);
+    return obj;
 }
+
+
 template<typename T>
 int muny(Vector<T>& obj)
 {
@@ -110,7 +77,7 @@ int muny(Vector<T>& obj)
     cout << "Operation №";
     int n;
     cin >> n;
-    while (n>10||n<=0)
+    while (n > 10 || n <= 0)
     {
         cout << "Incorrect value" << endl << "Operation №";
         cin >> n;
@@ -118,6 +85,8 @@ int muny(Vector<T>& obj)
     clear_monitor();
     return n;
 }
+
+
 template<typename T>
 void sum(Vector<T>& obj)
 {
@@ -128,6 +97,8 @@ void sum(Vector<T>& obj)
     obj = obj + tmp;
     cout << obj;
 }
+
+
 template<typename T>
 void sum_bool(Vector<T>& obj)
 {
@@ -136,10 +107,12 @@ void sum_bool(Vector<T>& obj)
     bool value;
     cout << "Boolean value = ";
     cin >> value;
-    obj=obj+value;
+    obj = obj + value;
     cout << obj;
     getchar();
 }
+
+
 template<typename T>
 void mul(Vector<T>& obj)
 {
@@ -150,58 +123,69 @@ void mul(Vector<T>& obj)
     obj = obj * tmp;
     cout << obj;
 }
+
+
 template<typename T>
 void mul_bool(Vector<T>& obj)
 {
     cout << "Multiply with bool" << endl;
-    cout << "Enter boolean value (1/0/true/false)" << endl;
-    bool value;
-    cout << "Boolean value = ";
+    cout << "Enter boolean value (1/0)" << endl;
+    T value;
+    cout << "Value = ";
     cin >> value;
-    obj=obj*value;
+    obj = obj * value;
     cout << obj;
     getchar();
 }
+
+
 template<typename T>
 void invert(Vector<T>& obj)
 {
     cout << "Invert image" << endl;
     cout << !obj;
     getchar();
-    
 }
+
+
 template<typename T>
 void fullness(Vector<T>& obj)
 {
     cout << "Image fullness = ";
-    cout << setprecision(4) << obj.coefficient_of_fullness()<< endl;
+    cout << setprecision(4) << obj.coefficient_of_fullness() << endl;
     getchar();
 }
+
+
 template<typename T>
 void change_one(Vector<T>& obj)
 {
     cout << "Change one element" << endl;
     cout << "Enter the coordinates (x,y)" << endl;
-    int x,y;
+    int x, y;
     test(obj.get_resolution(), x, y);
-    cout << "Enter boolean value (1/0/true/false)" << endl;
-    bool value;
-    cout << "Boolean value = ";
+    cout << "Enter value (1/0)" << endl;
+    T value;
+    cout << "Value = ";
     cin >> value;
-    obj(x,y,value);
+    obj(x, y, value);
     cout << obj;
     getchar();
 }
+
+
 template<typename T>
 void show_one(Vector<T>& obj)
 {
     cout << "Change one element" << endl;
     cout << "Enter the coordinates (x,y)" << endl;
-    int x,y;
+    int x, y;
     test(obj.get_resolution(), x, y);
-    cout << "(" << x << "," << y << ")" << obj(x,y);
+    cout << "(" << x << "," << y << ")" << obj(x, y);
     getchar();
 }
+
+
 template<typename T>
 void print_obj(Vector<T>& obj)
 {
@@ -209,25 +193,61 @@ void print_obj(Vector<T>& obj)
     getchar();
 }
 
-int main()
+
+template<typename T>
+void application()
 {
     void (*operatoin[9])(Vector<T>& obj) = {sum, sum_bool, mul, mul_bool, invert, fullness, change_one, show_one, print_obj};
     Vector<T> obj = creating_binary_lines<T>();
     cout << obj;
-    int n=muny(obj);
+    int n = muny(obj);
     getchar();
-    while (n<10)
+    while (n < 10)
     {
         try {
-            operatoin[n-1](obj);
+            operatoin[n - 1](obj);
         } catch (ESetErrors& err) {
             err.print_error();
         }
         getchar();
         clear_monitor();
         cout << "What's next?" << endl;
-        n=muny(obj);
+        n = muny(obj);
     }
+}
 
+
+int main()
+{
+    cout << "Select data type:" << endl;
+    cout << "1 - float" << endl;
+    cout << "2 - short" << endl;
+    cout << "3 - char" << endl;
+    cout << "4 - bool" << endl;
+    cout << "type: ";
+    int type;
+    cin >> type;
+    while (type <= 0 || type > 4)
+    {
+        cout << "Incorrect value" << endl;
+        cout << "type: ";
+        cin >> type;
+    }
+    getchar();
+    clear_monitor();
+    switch (type) {
+        case 1:
+            application<float>();
+            break;
+        case 2:
+            application<short>();
+            break;
+        case 3:
+            application<char>();
+            break;
+        case 4:
+            application<bool>();
+            break;
+    }
     return 0;
 }
