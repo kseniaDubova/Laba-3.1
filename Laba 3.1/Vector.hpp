@@ -6,10 +6,11 @@
 #include <stdio.h>
 #include <cmath>
 
+template<typename T>
 class Vector
 {
 private:
-    bool** _matrix;
+    T** _matrix;
     int _resolution;
     int min (int a, int b);
     int max (int a, int b);
@@ -21,14 +22,14 @@ public:
     void set_line(int x1, int y1, int x2, int y2);
     Vector(const Vector& a);
     ~Vector();
-    bool operator ()(int x, int y);
-    void operator ()(int x, int y, bool value);
+    T operator ()(int x, int y);
+    void operator ()(int x, int y, T value);
     Vector& operator *(const Vector& obg);
     Vector& operator +(const Vector& obg);
-    Vector& operator *(bool value);
-    Vector& operator +(bool value);
-    friend Vector& operator *(const bool value, Vector& obj);
-    friend Vector& operator +(const bool value, Vector& obj);
+    Vector& operator *(T value);
+    Vector& operator +(T value);
+    friend Vector& operator *(const T value, Vector& obj);
+    friend Vector& operator +(const T value, Vector& obj);
     Vector& operator !();
     double coefficient_of_fullness();
     friend ostream& operator << (ostream& s, const Vector& obj);

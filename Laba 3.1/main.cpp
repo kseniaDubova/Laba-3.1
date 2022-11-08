@@ -26,7 +26,36 @@ void test(int resolution, int& x, int& y)
         cin >> y;
     }
 }
-Vector creating_binary_lines()
+template<typename T>
+Vector<T> chooze_type(int type, int resolution,int x1,int y1,int x2,int y2)
+{
+    if (type==1)
+    {
+        Vector<float> obj(resolution);
+        obj.set_line(x1,y1,x2,y2);
+        return obj;
+    }
+    if (type == 2)
+    {
+        Vector<short> obj(resolution);
+        obj.set_line(x1,y1,x2,y2);
+        return obj;
+    }
+    if (type == 3)
+    {
+        Vector<char> obj(resolution);
+        obj.set_line(x1,y1,x2,y2);
+        return obj;
+    }
+    if (type == 4)
+    {
+        Vector<bool> obj(resolution);
+        obj.set_line(x1,y1,x2,y2);
+        return obj;
+    }
+}
+template<typename T>
+Vector<T> creating_binary_lines()
 {
     cout << "Creating binary lines" << endl;
     cout << "What is the image resolution? (n*n)" << endl;
@@ -47,12 +76,25 @@ Vector creating_binary_lines()
     cout << "Enter the coordinates of the ending of the line (x,y)" << endl;
     cout << "Values must be greater than zero" << endl;
     test(resolution, x2, y2);
+    cout << "Select data type:" << endl;
+    cout << "1 - float" << endl;
+    cout << "2 - short" << endl;
+    cout << "3 - char" << endl;
+    cout << "4 - bool" << endl;
+    cout << "type: ";
+    int type;
+    cin >> type;
+    while (type<=0||type>4)
+    {
+        cout << "Incorrect value" << endl;
+        cout << "type: ";
+        cin >> type;
+    }
     clear_monitor();
-    Vector obj(resolution);
-    obj.set_line(x1,y1,x2,y2);
-    return obj;
+    return chooze_type<T>(type, resolution, x1, y1, x2, y2);
 }
-int muny(Vector& obj)
+template<typename T>
+int muny(Vector<T>& obj)
 {
     cout << "What are you want to do? To press.." << endl;
     cout << "1 - summarize"<< endl;
@@ -76,16 +118,18 @@ int muny(Vector& obj)
     clear_monitor();
     return n;
 }
-void sum(Vector& obj)
+template<typename T>
+void sum(Vector<T>& obj)
 {
     cout << "Summarize" << endl;
-    Vector tmp = creating_binary_lines();
+    Vector<T> tmp = creating_binary_lines<T>();
     getchar();
     clear_monitor();
     obj = obj + tmp;
     cout << obj;
 }
-void sum_bool(Vector& obj)
+template<typename T>
+void sum_bool(Vector<T>& obj)
 {
     cout << "Summarize with bool" << endl;
     cout << "Enter boolean value (1/0/true/false)" << endl;
@@ -96,16 +140,18 @@ void sum_bool(Vector& obj)
     cout << obj;
     getchar();
 }
-void mul(Vector& obj)
+template<typename T>
+void mul(Vector<T>& obj)
 {
     cout << "Multiply" << endl;
-    Vector tmp = creating_binary_lines();
+    Vector<T> tmp = creating_binary_lines<T>();
     getchar();
     clear_monitor();
     obj = obj * tmp;
     cout << obj;
 }
-void mul_bool(Vector& obj)
+template<typename T>
+void mul_bool(Vector<T>& obj)
 {
     cout << "Multiply with bool" << endl;
     cout << "Enter boolean value (1/0/true/false)" << endl;
@@ -116,20 +162,23 @@ void mul_bool(Vector& obj)
     cout << obj;
     getchar();
 }
-void invert(Vector& obj)
+template<typename T>
+void invert(Vector<T>& obj)
 {
     cout << "Invert image" << endl;
     cout << !obj;
     getchar();
     
 }
-void fullness(Vector& obj)
+template<typename T>
+void fullness(Vector<T>& obj)
 {
     cout << "Image fullness = ";
     cout << setprecision(4) << obj.coefficient_of_fullness()<< endl;
     getchar();
 }
-void change_one(Vector& obj)
+template<typename T>
+void change_one(Vector<T>& obj)
 {
     cout << "Change one element" << endl;
     cout << "Enter the coordinates (x,y)" << endl;
@@ -143,7 +192,8 @@ void change_one(Vector& obj)
     cout << obj;
     getchar();
 }
-void show_one(Vector& obj)
+template<typename T>
+void show_one(Vector<T>& obj)
 {
     cout << "Change one element" << endl;
     cout << "Enter the coordinates (x,y)" << endl;
@@ -152,15 +202,17 @@ void show_one(Vector& obj)
     cout << "(" << x << "," << y << ")" << obj(x,y);
     getchar();
 }
-void print_obj(Vector& obj)
+template<typename T>
+void print_obj(Vector<T>& obj)
 {
     cout << obj;
     getchar();
 }
+
 int main()
 {
-    void (*operatoin[9])(Vector& obj) = {sum, sum_bool, mul, mul_bool, invert, fullness, change_one, show_one, print_obj};
-    Vector obj = creating_binary_lines();
+    void (*operatoin[9])(Vector<T>& obj) = {sum, sum_bool, mul, mul_bool, invert, fullness, change_one, show_one, print_obj};
+    Vector<T> obj = creating_binary_lines<T>();
     cout << obj;
     int n=muny(obj);
     getchar();
