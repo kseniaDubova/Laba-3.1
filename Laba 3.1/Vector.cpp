@@ -104,7 +104,6 @@ void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1
                     int error = 0;
                     int deltaerr = (deltax + 1);
                     int x = min_x;
-//                    int x = min_x;
                     int dirx = max_x - min_x;
                     if (dirx > 0)
                         dirx = 1;
@@ -293,23 +292,6 @@ double Vector<T>:: coefficient_of_fullness()
     return counter / (_resolution*_resolution);
 }
 
-
-//template<typename T>
-//ostream& operator << (ostream& s, const Vector<T>& obj)
-//{
-//   for (int i = obj.get_resolution() - 1; i >= 0; i--)
-//    {
-//        for (int j = 0; j < obj.get_resolution(); j++)
-//        {
-//            if (obj(i, j) == (T)0)
-////            if (obj(i, j) == (T)0)
-//                s << " ";
-//            else s << obj(i, j);
-//        }
-//        s << endl;
-//    }
-//    return s;
-//}
 
 template<typename T>
 T Vector<T>:: operator ()(int x, int y)

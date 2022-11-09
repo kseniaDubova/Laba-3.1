@@ -2,24 +2,8 @@
 #include "Vector.hpp"
 #include <iostream>
 #include <iomanip>
+#include <string.h>
 using namespace std;
-
-//template<typename T>
-//ostream& operator << (ostream& s, const Vector<T>& obj)
-//{
-//   for (int i = obj.get_resolution() - 1; i >= 0; i--)
-//    {
-//        for (int j = 0; j < obj.get_resolution(); j++)
-//        {
-//            if (obj(i, j) == (T)0)
-////            if (obj(i, j) == (T)0)
-//                s << " ";
-//            else s << obj(i, j);
-//        }
-//        s << endl;
-//    }
-//    return s;
-//}
 
 
 void clear_monitor()
@@ -31,12 +15,29 @@ void clear_monitor()
 }
 
 
+int check()
+{
+    int number = 0;
+    while (number <= 0)
+    {
+        while (!(cin >> number) || (cin.peek() != '\n'))
+        {
+            cin.clear();
+            while (cin.get() != '\n');
+            cout << "Incorrect value" << endl;
+        }
+        if (number <= 0) cout << "Incorrect value" << endl;
+    }
+    return number;
+}
+
+
 void test(int resolution, int& x, int& y)
 {
     cout << "x = ";
-    cin >> x;
+    x = check();
     cout << "y = ";
-    cin >> y;
+    y = check();
     while (x <= 0 || x > resolution || y <= 0 || y > resolution)
     {
         cout << "Incorrect value" << endl;
@@ -54,8 +55,7 @@ Vector<T> creating_binary_lines()
     cout << "Creating binary lines" << endl;
     cout << "What is the image resolution? (n*n)" << endl;
     cout << "Resolution (n*n): n = ";
-    int resolution;
-    cin >> resolution;
+    int resolution = check();
     while (resolution <= 0)
     {
         cout << "Incorrect value" << endl;
@@ -92,8 +92,7 @@ int muny(Vector<T>& obj)
     cout << "9 - print image" << endl;
     cout << "10 - go out" << endl;
     cout << "Operation №";
-    int n;
-    cin >> n;
+    int n = check();
     while (n > 10 || n <= 0)
     {
         cout << "Incorrect value" << endl << "Operation №";
