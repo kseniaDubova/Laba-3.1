@@ -294,22 +294,22 @@ double Vector<T>:: coefficient_of_fullness()
 }
 
 
-template<typename T>
-ostream& operator << (ostream& s, const Vector<T>& obj)
-{
-   for (int i = obj._resolution - 1; i >= 0; i--)
-    {
-        for (int j = 0; j < obj._resolution; j++)
-        {
-            if (obj._matrix[i][j] == (T)0)
-                s << " ";
-            else s << obj._matrix[i][j];
-        }
-        s << endl;
-    }
-    return s;
-}
-
+//template<typename T>
+//ostream& operator << (ostream& s, const Vector<T>& obj)
+//{
+//   for (int i = obj.get_resolution() - 1; i >= 0; i--)
+//    {
+//        for (int j = 0; j < obj.get_resolution(); j++)
+//        {
+//            if (obj(i, j) == (T)0)
+////            if (obj(i, j) == (T)0)
+//                s << " ";
+//            else s << obj(i, j);
+//        }
+//        s << endl;
+//    }
+//    return s;
+//}
 
 template<typename T>
 T Vector<T>:: operator ()(int x, int y)
@@ -339,3 +339,8 @@ Vector<T>& operator +(const T value, Vector<T>& obj)
 {
     return obj + value;
 }
+
+template class Vector<float>;
+template class Vector<short>;
+template class Vector<char>;
+template class Vector<bool>;

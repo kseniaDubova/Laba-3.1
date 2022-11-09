@@ -32,7 +32,21 @@ public:
     friend Vector& operator +(const T value, Vector& obj);
     Vector& operator !();
     double coefficient_of_fullness();
-    friend ostream& operator << (ostream& s, const Vector& obj);
+    friend ostream& operator << (ostream& s, const Vector& obj)
+    {
+       for (int i = obj.get_resolution() - 1; i >= 0; i--)
+        {
+            for (int j = 0; j < obj.get_resolution(); j++)
+            {
+                if (obj._matrix[i][j] == (T)0)
+    //            if (obj(i, j) == (T)0)
+                    s << " ";
+                else s << "1";
+            }
+            s << endl;
+        }
+        return s;
+    };
 
 };
 
