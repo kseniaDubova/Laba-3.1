@@ -2,7 +2,7 @@
 #include "Vector.hpp"
 #include <iostream>
 #include <iomanip>
-#include <string.h>
+//#include <string.h>
 using namespace std;
 
 
@@ -17,8 +17,8 @@ void clear_monitor()
 
 int check()
 {
-    int number = 0;
-    while (number <= 0)
+    int number = -1;
+    while (number < 0)
     {
         while (!(cin >> number) || (cin.peek() != '\n'))
         {
@@ -26,7 +26,7 @@ int check()
             while (cin.get() != '\n');
             cout << "Incorrect value" << endl;
         }
-        if (number <= 0) cout << "Incorrect value" << endl;
+       if (number < 0) cout << "Incorrect value" << endl;
     }
     return number;
 }
@@ -38,13 +38,13 @@ void test(int resolution, int& x, int& y)
     x = check();
     cout << "y = ";
     y = check();
-    while (x <= 0 || x > resolution || y <= 0 || y > resolution)
+    while (x < 0 || x > resolution || y < 0 || y > resolution)
     {
         cout << "Incorrect value" << endl;
         cout << "x = ";
-        cin >> x;
+        x = check();
         cout << "y = ";
-        cin >> y;
+        y = check();
     }
 }
 
@@ -65,10 +65,10 @@ Vector<T> creating_binary_lines()
 
     int x1,y1,x2,y2;
     cout << "Enter the coordinates of the beginning of the line (x,y)" << endl;
-    cout << "Values must be greater than zero" << endl;
+//    cout << "Values must be greater than zero" << endl;
     test(resolution, x1, y1);
     cout << "Enter the coordinates of the ending of the line (x,y)" << endl;
-    cout << "Values must be greater than zero" << endl;
+//    cout << "Values must be greater than zero" << endl;
     test(resolution, x2, y2);
     clear_monitor();
     Vector<T> obj(resolution);
@@ -82,9 +82,9 @@ int muny(Vector<T>& obj)
 {
     cout << "What are you want to do? To press.." << endl;
     cout << "1 - summarize"<< endl;
-    cout << "2 - summarize with bool"<< endl;
+    cout << "2 - summarize with value"<< endl;
     cout << "3 - multiply"<< endl;
-    cout << "4 - multiply with bool"<< endl;
+    cout << "4 - multiply with value"<< endl;
     cout << "5 - invert image" << endl;
     cout << "6 - image fullness calculation" << endl;
     cout << "7 - сhange one element" << endl;
@@ -118,11 +118,15 @@ void sum(Vector<T>& obj)
 template<typename T>
 void sum_bool(Vector<T>& obj)
 {
-    cout << "Summarize with bool" << endl;
-    cout << "Enter boolean value (1/0/true/false)" << endl;
-    bool value;
-    cout << "Boolean value = ";
-    cin >> value;
+    cout << "Summarize with" << endl;
+    cout << "Enter value (1/0)" << endl;
+    cout << "Value = ";
+    T value = check();
+    while(value != 1 && value != 0)
+    {
+        cout << "Incorrect value" << endl;
+        value = check();
+    }
     obj = obj + value;
     cout << obj;
     getchar();
@@ -144,11 +148,14 @@ void mul(Vector<T>& obj)
 template<typename T>
 void mul_bool(Vector<T>& obj)
 {
-    cout << "Multiply with bool" << endl;
-    cout << "Enter boolean value (1/0)" << endl;
-    T value;
-    cout << "Value = ";
-    cin >> value;
+    cout << "Multiply" << endl;
+    cout << "Enter value (1/0)" << endl;
+    T value = check();
+    while(value != 1 && value != 0)
+    {
+        cout << "Incorrect value" << endl;
+        value = check();
+    }
     obj = obj * value;
     cout << obj;
     getchar();
@@ -181,9 +188,12 @@ void change_one(Vector<T>& obj)
     int x, y;
     test(obj.get_resolution(), x, y);
     cout << "Enter value (1/0)" << endl;
-    T value;
-    cout << "Value = ";
-    cin >> value;
+    T value = check();
+    while(value != 1 && value != 0)
+    {
+        cout << "Incorrect value" << endl;
+        value = check();
+    }
     obj(x, y, value);
     cout << obj;
     getchar();
