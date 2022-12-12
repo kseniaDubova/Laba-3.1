@@ -32,7 +32,7 @@ public:
     Vector(const Vector& a);
     T operator ()(int x, int y);
     void operator ()(int x, int y, const T value);
-    Vector& operator *(Vector& obg);
+    Vector& operator *(const Vector& obg);
     Vector& operator +(const Vector& obg);
     Vector& operator *(T value);
     Vector& operator +(T value);
@@ -50,17 +50,6 @@ public:
             }
             s << endl;
         }
-        
-//       for (int i = obj.get_resolution() - 1; i >= 0; i--)
-//        {
-//            for (int j = 0; j < obj.get_resolution(); j++)
-//            {
-//                if (obj._matrix[i][j] == (T)0)
-//                    s << " ";
-//                else s << "1";
-//            }
-//            s << endl;
-//        }
         return s;
     };
 
