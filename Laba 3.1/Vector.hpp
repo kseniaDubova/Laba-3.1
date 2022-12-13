@@ -24,6 +24,7 @@ public:
     auto rend() { return _matrix.rend(); }
     auto cbegin() const { return _matrix.cbegin(); }
     auto cend() const { return _matrix.cend(); }
+    Vector();
     Vector(int resolution=0);
     ~Vector();
     int get_resolution() const;

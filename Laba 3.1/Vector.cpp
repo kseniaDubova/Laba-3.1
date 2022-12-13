@@ -12,7 +12,6 @@ int Vector<T>:: min (int a, int b)
 { return (a < b) ? a: b;}
 
 
-
 template<typename T>
 void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1,int flag_2)
 {
@@ -129,6 +128,9 @@ void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1
     }
 }
 
+template<typename T>
+Vector<T>::Vector()
+{}
 
 template<typename T>
 Vector<T>::Vector(int resolution)
@@ -176,25 +178,6 @@ int Vector<T>:: get_resolution() const
 {
     return _resolution;
 }
-
-
-//template<typename T>
-//Vector<T>::Vector(const Vector<T>& obj)
-//{
-//    _resolution = obj._resolution;
-//    _matrix.reserve(_resolution);
-//    auto obj_iter = obj.cbegin();
-//    for (auto iter = begin(); iter != end(); ++iter)
-//    {
-//        auto obj_it = obj_iter->begin();
-//        for(auto it = iter->begin(); it != iter->end(); ++it)
-//        {
-//            (*it) = (*obj_it);
-//            ++obj_it;
-//        }
-//        ++obj_iter;
-//    }
-//}
 
 
 template<typename T>
