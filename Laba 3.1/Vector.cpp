@@ -128,9 +128,9 @@ void Vector<T>:: make_line(int min_x, int max_x, int min_y, int max_y,int flag_1
     }
 }
 
-template<typename T>
-Vector<T>::Vector()
-{}
+//template<typename T>
+//Vector<T>::Vector()
+//{}
 
 template<typename T>
 Vector<T>::Vector(int resolution)
@@ -140,12 +140,29 @@ Vector<T>::Vector(int resolution)
     _matrix = matrix;
 }
 
-
 template<typename T>
-Vector<T>::~Vector()
+Vector<T>& Vector<T>:: operator=(const Vector& obj)
 {
-    _matrix.clear();
+    _resolution = obj._resolution;
+
+    auto obj_iter = obj.cbegin();
+    for (auto iter = begin(); iter != end(); ++iter)
+    {
+        auto obj_it = obj_iter->begin();
+        for(auto it = iter->begin(); it != iter->end(); ++it)
+        {
+            (*it) = (*obj_it);
+            ++obj_it;
+        }
+        ++obj_iter;
+    }
+    return *this;
 }
+//template<typename T>
+//Vector<T>::~Vector()
+//{
+//    _matrix.clear();
+//}
 
 template<typename T>
 void Vector<T>:: set_line(int x1, int y1, int x2, int y2)
